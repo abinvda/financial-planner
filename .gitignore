@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Portable toolchain (local Node install)
+.toolchain/
+
+# Build output
+dist/
+dist-ssr/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+
+# Local env
+.env
+.env.local
+
+# Legacy python reference project artifacts
+Code/.venv/
+**/__pycache__/
+*.pyc
