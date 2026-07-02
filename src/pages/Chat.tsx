@@ -9,11 +9,11 @@ import { listModels, streamChat, type ChatMessage } from "../lib/ollama";
 type Status = "unknown" | "checking" | "online" | "offline";
 
 const SUGGESTIONS = [
-  "How much can Shweta comfortably save every month?",
-  "Should Shweta do Roth or traditional while her income is low in residency?",
-  "Will Shweta still qualify for a direct Roth IRA once she's an attending?",
+  "How much can I comfortably save every month?",
+  "Should I do Roth or traditional while my income is still low?",
+  "Will I still qualify for a direct Roth IRA after my income jumps?",
   "Is maxing the HSA worth it, and how much tax does it save?",
-  "When can Shweta reach Coast FIRE, and what changes if she saves more?",
+  "When can I reach Coast FIRE, and what changes if I save more?",
 ];
 
 interface UIMessage {

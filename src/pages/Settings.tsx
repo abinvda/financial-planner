@@ -198,7 +198,7 @@ export default function Settings() {
           <div>
             <p className="font-semibold text-slate-100">Roth (post-tax)</p>
             <p className="mt-1 text-slate-400">
-              You pay tax now; growth and qualified withdrawals are tax-free. Best when your tax rate is low today (e.g. a resident early in training) and likely higher later.
+              You pay tax now; growth and qualified withdrawals are tax-free. Best when your tax rate is low today and likely higher later.
             </p>
           </div>
         </div>

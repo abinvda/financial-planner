@@ -10,6 +10,13 @@ export function useUsers(): Member[] {
   return useMemo(() => members.filter((m) => !m.hidden), [members]);
 }
 
+/** Map legacy sample-user ids saved in the UI store before the John/Jane rename. */
+const LEGACY_USER_IDS: Record<string, string> = {
+  kirti: "john",
+  shweta: "john",
+  karan: "jane",
+};
+
 /** The currently selected user (falls back to the first visible user). */
 export function useActiveUser(): Member {
   const members = useStore((s) => s.members);
@@ -17,7 +24,8 @@ export function useActiveUser(): Member {
   return useMemo(() => {
     const visible = members.filter((m) => !m.hidden);
     const pool = visible.length ? visible : members;
-    return pool.find((m) => m.id === activeUserId) ?? pool[0];
+    const resolvedId = LEGACY_USER_IDS[activeUserId] ?? activeUserId;
+    return pool.find((m) => m.id === resolvedId) ?? pool[0];
   }, [members, activeUserId]);
 }
 

@@ -133,7 +133,7 @@ function CareerStageCard({
       <div className="mt-3 rounded-xl border border-amber-400/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
         {rateJumps ? (
           <>
-            <span className="font-semibold">Do the Roth things now.</span> Your rate is only {formatPct(nowRate)} today and jumps to about {formatPct(laterRate)} once you're {later.label.toLowerCase()}. So lock in tax-free growth while it's cheap: choose <span className="font-semibold">Roth</span> for your 401(k)/403(b) contributions, and max a <span className="font-semibold">direct Roth IRA</span> {eligibleNow ? "now while you still qualify" : "if you qualify"}{!eligibleLater ? " — because as an attending you'll be over the income limit and stuck with the backdoor route" : ""}. Once your rate is high, traditional (pre-tax) contributions usually win.
+            <span className="font-semibold">Do the Roth things now.</span> Your rate is only {formatPct(nowRate)} today and jumps to about {formatPct(laterRate)} once you're {later.label.toLowerCase()}. So lock in tax-free growth while it's cheap: choose <span className="font-semibold">Roth</span> for your 401(k)/403(b) contributions, and max a <span className="font-semibold">direct Roth IRA</span> {eligibleNow ? "now while you still qualify" : "if you qualify"}{!eligibleLater ? " — because at the higher income you'll be over the limit and stuck with the backdoor route" : ""}. Once your rate is high, traditional (pre-tax) contributions usually win.
           </>
         ) : (
           <>Your marginal rate isn't much higher later, so the Roth-vs-traditional call is close — see the breakdown below.</>

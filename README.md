@@ -11,14 +11,13 @@ The same build runs on your machine and on a static host like GitHub Pages.
 The app treats each person as an independent **single filer** and ships with a
 sample user you can edit or replace:
 
-- **Shweta** - US citizen, Internal Medicine resident. Modest resident stipend and
-  a low tax bracket today, but expects to become an attending (a big pay jump) in a
-  few years. That temporary low bracket is exactly when Roth contributions and a
-  direct Roth IRA are most valuable.
+- **John** — lower income today with a planned pay jump in a few years. That
+  temporary low bracket is exactly when Roth contributions and a direct Roth IRA
+  are most valuable.
 
-A second sample user (**Karan** - software engineer with an INR home loan) ships
-**hidden**; unhide him any time under **Settings -> Users**. Switch the active user
-in the left sidebar; each has an independent budget, decisions and retirement plan.
+A second sample user (**Jane**) ships **hidden**; unhide her any time under
+**Settings -> Users**. Switch the active user in the left sidebar; each has an
+independent budget, decisions and retirement plan.
 
 Every tab reads from the same live data, so a change in one place (income, an
 account balance, an assumption) instantly flows into the others.
@@ -31,9 +30,9 @@ account balance, an assumption) instantly flows into the others.
   loan/debt payments.
 - **Decisions** - verifiable calculators, each showing its full math and a
   plain-English explanation, using **2026** limits and brackets:
-  - **Rate now vs. later** - for someone with a future pay jump (e.g. resident ->
-    attending), a side-by-side of today's marginal rate and Roth-IRA eligibility vs.
-    the future stage, with a clear recommendation.
+  - **Rate now vs. later** - for someone with a future pay jump, a side-by-side of
+    today's marginal rate and Roth-IRA eligibility vs. the future stage, with a
+    clear recommendation.
   - **Roth vs. Traditional 401(k)/403(b)** - which wins given your tax rate now vs.
     in retirement.
   - **Roth IRA** - whether you should contribute, your income phase-out limit, the
@@ -44,7 +43,7 @@ account balance, an assumption) instantly flows into the others.
   **Coast FIRE** target (what you'd need invested today to coast to FIRE without
   saving another dollar), time to financial independence, and a trajectory chart.
   It reads your savings capacity from the Budget and your balances from the
-  Investments list, and models a future income ramp (resident -> attending).
+  Investments list, and models a future income ramp when a career stage is set.
 - **AI Chat** - ask budgeting, decision, or retirement questions; a local Ollama
   model answers using a live snapshot of each user's numbers, quantifies with your
   figures, and shows the reasoning.

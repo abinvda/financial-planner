@@ -329,7 +329,7 @@ export default function StudentLoan() {
           <Field label="Forgiveness after (years)" hint="PSLF = 10 years of payments">
             <NumberInput step={1} value={forgivenessMonths / 12} onChange={(e) => patch({ forgivenessMonths: Math.max(1, Math.round(+e.target.value)) * 12 })} />
           </Field>
-          <Field label="Side invest — while training" hint="Easy savings during residency (default $400/mo)">
+          <Field label="Side invest — while training" hint="Easy savings during the lower-income phase (default $400/mo)">
             <NumberInput value={residentSideInvestMonthly} onChange={(e) => patch({ residentSideInvestMonthly: Math.max(0, +e.target.value) })} />
           </Field>
           <Field label="Aggressive — as attending" hint={`Suggested ${formatUsd(aggressiveAttendingDefault)}/mo (~4-yr payoff); gap above IDR is invested`}>

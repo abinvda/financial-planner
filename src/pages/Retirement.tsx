@@ -187,7 +187,7 @@ export default function Retirement() {
         </div>
       </Card>
 
-      <Card className="mt-4" title="Career stage" subtitle="A future pay jump changes how fast you can save. Residents: model your attending salary here.">
+      <Card className="mt-4" title="Career stage" subtitle="A future pay jump changes how fast you can save. Model your higher-income phase here.">
         {user.futureStage ? (
           <>
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
@@ -215,7 +215,7 @@ export default function Retirement() {
           </>
         ) : (
           <div className="flex items-center justify-between gap-4">
-            <p className="text-sm text-slate-400">No future stage set. Add one to model a pay jump (e.g. resident → attending).</p>
+            <p className="text-sm text-slate-400">No future stage set. Add one to model a future pay jump.</p>
             <Button variant="subtle" onClick={() => updateMember(user.id, { futureStage: { label: "Higher income", annualGrossUsd: Math.round(summary.grossAnnualUsd * 2), startInYears: 3 } })}>
               + Add future stage
             </Button>

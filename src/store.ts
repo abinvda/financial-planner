@@ -159,9 +159,9 @@ function normalizeMember(raw: unknown, seedMember: Member): Member {
 
 /**
  * Upgrades older persisted data in-place: single-filer 2026 tax model,
- * Kirti → Shweta, Karan hidden, and retirement defaults for everyone. Users'
- * incomes/expenses/accounts/loans are preserved. Any malformed data falls
- * back to the seed rather than crashing the app with a blank screen.
+ * legacy sample users → John/Jane, and retirement defaults for everyone.
+ * Users' incomes/expenses/accounts/loans are preserved. Any malformed data
+ * falls back to the seed rather than crashing the app with a blank screen.
  */
 function migrateState(persisted: unknown, version: number): HouseholdState {
   try {
@@ -195,25 +195,45 @@ function migrateStateUnsafe(persisted: unknown, _version: number): HouseholdStat
 
   const members: Member[] = rawMembers.map((raw, i) => {
     const next = normalizeMember(raw, seedByIndex(i));
-    if (next.id === "kirti" || next.id === "shweta" || next.name === "Kirti") {
-      next.name = "Shweta";
+    const isPrimarySample =
+      next.id === "john" ||
+      next.id === "kirti" ||
+      next.id === "shweta" ||
+      next.name === "Kirti" ||
+      next.name === "Shweta";
+    const isSecondarySample =
+      next.id === "jane" || next.id === "karan" || next.name === "Karan";
+
+    if (isPrimarySample) {
+      next.id = "john";
+      next.name = "John";
       next.hidden = false;
+      next.notes = "";
       if (!next.futureStage) {
         next.futureStage = {
-          label: "Attending physician",
+          label: "Higher income",
           annualGrossUsd: 285000,
           startInYears: 3,
         };
+      } else if (next.futureStage.label === "Attending physician") {
+        next.futureStage = { ...next.futureStage, label: "Higher income" };
       }
       if (next.cityTaxRatePct == null) {
         next.cityTaxRatePct = 1.2;
-        next.cityTaxLabel = "Detroit city tax (non-resident 1.2%)";
+        next.cityTaxLabel = "City income tax (non-resident)";
+      } else if (next.cityTaxLabel?.includes("Detroit")) {
+        next.cityTaxLabel = "City income tax (non-resident)";
       }
       if (next.deductions.iraAnnual == null) {
         next.deductions = { ...next.deductions, iraAnnual: 7000, iraType: "roth" };
       }
     }
-    if (next.id === "karan" || next.name === "Karan") next.hidden = true;
+    if (isSecondarySample) {
+      next.id = "jane";
+      next.name = "Jane";
+      next.hidden = true;
+      next.notes = "";
+    }
     return next;
   });
 

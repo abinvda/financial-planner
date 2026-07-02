@@ -33,6 +33,7 @@ export default function Budget() {
   const removeItem = useStore((s) => s.removeItem);
   const updateMember = useStore((s) => s.updateMember);
   const fx = useStore((s) => s.settings.usdInrFxRate);
+  const taxProfile = useStore((s) => s.tax);
 
   const [period, setPeriod] = useState<PeriodKey>("biweekly");
 
@@ -41,7 +42,7 @@ export default function Budget() {
     const per = (v: number) => v / d;
     const t = summary.tax;
     const gross = per(summary.grossAnnualUsd);
-    const stateLabel = user.cityTaxLabel?.includes("Detroit") ? "Michigan" : "State";
+    const stateLabel = taxProfile.state || "State";
     const retirementLabel = user.deductions.retirementType === "roth" ? "Roth 403(b)" : "403(b)";
     const match = per(summary.employerMatchAnnual);
 
