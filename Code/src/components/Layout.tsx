@@ -29,6 +29,7 @@ const NAV: NavItem[] = [
   { to: "/", label: "Overview", icon: icon("M3 12l9-9 9 9M5 10v10h5v-6h4v6h5V10") },
   { to: "/budget", label: "Budget", icon: icon("M4 5h16M4 12h16M4 19h10") },
   { to: "/decisions", label: "Decisions", icon: icon("M9 3v4M9 3H5v4h4M9 3h6v4M15 3v18M9 7v14m0 0H5v-4h4m0 4h6v-4M19 7h-4v4h4V7z") },
+  { to: "/roth-vs-traditional", label: "Roth vs Trad", icon: icon("M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6") },
   { to: "/retirement", label: "Retirement", icon: icon("M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6") },
   { to: "/student-loan", label: "Student Loan", icon: icon("M22 10L12 5 2 10l10 5 10-5zM6 12v5c0 1 3 3 6 3s6-2 6-3v-5M22 10v6") },
   { to: "/chat", label: "AI Chat", icon: icon("M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z") },

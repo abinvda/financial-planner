@@ -231,7 +231,7 @@ function migrateStateUnsafe(persisted: unknown, _version: number): HouseholdStat
     if (isSecondarySample) {
       next.id = "jane";
       next.name = "Jane";
-      next.hidden = true;
+      next.hidden = false;
       next.notes = "";
     }
     return next;

@@ -4,5 +4,6 @@ export * from "./loan";
 export * from "./projection";
 export * from "./emergencyFund";
 export * from "./decisions";
+export * from "./rothVsTradProjection";
 export * from "./retirement";
 export * from "./studentLoan";

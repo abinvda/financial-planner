@@ -160,25 +160,43 @@ export default function Settings() {
         </p>
       </Card>
 
-      <Card className="mt-4" title="Users" subtitle="Rename people, edit their persona notes, hide a user, or add/remove users.">
+      <Card className="mt-4" title="Users" subtitle="Rename people, set a local/city income tax, edit persona notes, hide a user, or add/remove users.">
         <div className="space-y-3">
           {members.map((m) => (
-            <div key={m.id} className={`grid grid-cols-1 gap-3 rounded-lg border border-[var(--color-border-subtle)] p-3 lg:grid-cols-[auto_1fr_2fr_auto_auto] lg:items-end ${m.hidden ? "opacity-60" : ""}`}>
-              <Field label="Color">
-                <Select value={m.color} onChange={(e) => updateMember(m.id, { color: e.target.value })} className="w-24">
-                  {MEMBER_COLORS.map((c) => <option key={c} value={c}>{c}</option>)}
-                </Select>
-              </Field>
-              <Field label="Name">
-                <TextInput value={m.name} onChange={(e) => updateMember(m.id, { name: e.target.value })} />
-              </Field>
-              <Field label="Notes (persona given to the AI)">
-                <TextInput value={m.notes} onChange={(e) => updateMember(m.id, { notes: e.target.value })} />
-              </Field>
-              <Button variant="ghost" onClick={() => updateMember(m.id, { hidden: !m.hidden })}>
-                {m.hidden ? "Show" : "Hide"}
-              </Button>
-              <Button variant="danger" disabled={members.length <= 1} onClick={() => removeMember(m.id)}>Remove</Button>
+            <div key={m.id} className={`space-y-3 rounded-lg border border-[var(--color-border-subtle)] p-3 ${m.hidden ? "opacity-60" : ""}`}>
+              <div className="grid grid-cols-1 gap-3 lg:grid-cols-[auto_1fr_2fr_auto_auto] lg:items-end">
+                <Field label="Color">
+                  <Select value={m.color} onChange={(e) => updateMember(m.id, { color: e.target.value })} className="w-24">
+                    {MEMBER_COLORS.map((c) => <option key={c} value={c}>{c}</option>)}
+                  </Select>
+                </Field>
+                <Field label="Name">
+                  <TextInput value={m.name} onChange={(e) => updateMember(m.id, { name: e.target.value })} />
+                </Field>
+                <Field label="Notes (persona given to the AI)">
+                  <TextInput value={m.notes} onChange={(e) => updateMember(m.id, { notes: e.target.value })} />
+                </Field>
+                <Button variant="ghost" onClick={() => updateMember(m.id, { hidden: !m.hidden })}>
+                  {m.hidden ? "Show" : "Hide"}
+                </Button>
+                <Button variant="danger" disabled={members.length <= 1} onClick={() => removeMember(m.id)}>Remove</Button>
+              </div>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-[auto_1fr] sm:max-w-xl">
+                <Field label="City / local tax %" hint="0 = none (applies to this user only)">
+                  <NumberInput
+                    step={0.1}
+                    value={m.cityTaxRatePct ?? 0}
+                    onChange={(e) => updateMember(m.id, { cityTaxRatePct: Math.max(0, +e.target.value) })}
+                  />
+                </Field>
+                <Field label="City tax label" hint="Shown in the budget breakdown">
+                  <TextInput
+                    value={m.cityTaxLabel ?? ""}
+                    placeholder="e.g. City income tax (non-resident)"
+                    onChange={(e) => updateMember(m.id, { cityTaxLabel: e.target.value })}
+                  />
+                </Field>
+              </div>
             </div>
           ))}
         </div>

@@ -1,0 +1,2 @@
+﻿# Reconstructed from Projects\Others\Financial Planner\Code\.venv .dist-info metadata on 2026-09-22
+pip==25.3

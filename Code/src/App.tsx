@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import Health from "./pages/Health";
 import Budget from "./pages/Budget";
 import Decisions from "./pages/Decisions";
+import RothVsTraditional from "./pages/RothVsTraditional";
 import Retirement from "./pages/Retirement";
 import StudentLoan from "./pages/StudentLoan";
 import Chat from "./pages/Chat";
@@ -15,6 +16,7 @@ export default function App() {
         <Route index element={<Health />} />
         <Route path="budget" element={<Budget />} />
         <Route path="decisions" element={<Decisions />} />
+        <Route path="roth-vs-traditional" element={<RothVsTraditional />} />
         <Route path="retirement" element={<Retirement />} />
         <Route path="student-loan" element={<StudentLoan />} />
         <Route path="chat" element={<Chat />} />

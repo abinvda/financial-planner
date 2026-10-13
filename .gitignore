@@ -25,3 +25,6 @@ npm-debug.log*
 Code/.venv/
 **/__pycache__/
 *.pyc
+Code/dist/
+Code/Runs/Dist/
+

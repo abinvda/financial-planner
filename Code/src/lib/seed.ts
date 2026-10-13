@@ -92,7 +92,6 @@ const jane: Member = {
   id: "jane",
   name: "Jane",
   color: JANE_COLOR,
-  hidden: true,
   notes: "",
   incomes: [
     { id: "jane-base", name: "Base salary", annualGross: 165000, currency: "USD", taxable: true, payout: "monthly" },
@@ -175,4 +174,4 @@ export function makeSeedState(): HouseholdState {
   };
 }
 
-export const SCHEMA_VERSION = 6;
+export const SCHEMA_VERSION = 7;

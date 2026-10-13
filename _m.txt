@@ -1,0 +1,4 @@
+Move Node app under Code/ per project layout standard
+
+Relocate src, package manifests and Vite config into Code/; ignore
+Code/dist as build output under Code/Runs.
