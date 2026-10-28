@@ -17,6 +17,7 @@ htmlcov/
 
 # Node / Frontend
 node_modules/
+.toolchain/
 dist/
 .vite/
 coverage/

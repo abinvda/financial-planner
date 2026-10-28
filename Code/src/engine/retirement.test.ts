@@ -28,6 +28,23 @@ describe("projectRetirement", () => {
     expect(r.fireNumber).toBeCloseTo(1_000_000, 0);
     // Coast number is the FIRE number discounted back over the years to retirement.
     expect(r.coastNumber).toBeCloseTo(1_000_000 / Math.pow(1.05, 25), 0);
+    expect(r.coastNumber).toBeLessThan(r.fireNumber);
+  });
+
+  it("never sets Coast FIRE above the FIRE number when the real return is positive", () => {
+    const r = projectRetirement({
+      currentAge: 32,
+      retireAge: 55,
+      currentInvested: 200_000,
+      annualContribution: 30_000,
+      realReturnPct: 5,
+      withdrawalRatePct: 4,
+      annualSpending: 60_000,
+    });
+    expect(r.coastNumber).toBeLessThan(r.fireNumber);
+    // Purple "coast path" may exceed FIRE before retire age if you're already past Coast FI.
+    const last = r.points.at(-1)!;
+    expect(last.coastBalance).toBeGreaterThanOrEqual(r.coastNumber);
   });
 
   it("flags Coast FIRE once current investments alone would grow into the FIRE number", () => {

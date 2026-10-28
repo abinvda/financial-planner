@@ -118,7 +118,11 @@ export default function Retirement() {
         projectionAmount={annualContribution}
       />
 
-      <Card className="mt-4" title="Your trajectory" subtitle="Green = balance while you keep saving. Dashed indigo = if you stopped saving today. Cyan = Coast FIRE number, amber = FIRE target; dots mark when you reach each.">
+      <Card
+        className="mt-4"
+        title="Your trajectory"
+        subtitle="Green = portfolio if you keep saving. Purple = if you stopped contributing today (it can rise above the FIRE line — that's growth, not a higher Coast target). Cyan = Coast FIRE dollars needed today; amber = full FIRE nest egg."
+      >
         <ProjectionChart points={result.points} fireNumber={result.fireNumber} coastNumber={result.coastNumber} retireAge={plan.retireAge} ageAtFI={result.ageAtFI} ageAtCoast={result.ageAtCoast} />
         <Insight result={result} />
         <MathSteps steps={result.steps} />

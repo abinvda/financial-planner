@@ -131,8 +131,10 @@ export function projectRetirement(input: RetirementInput): RetirementResult {
   const yearsToRetire = Math.max(0, retireAge - currentAge);
 
   const fireNumber = swr > 0 ? annualSpending / swr : Infinity;
+  // Dollars needed *today* so growth alone reaches the FIRE number by retireAge.
+  // With a positive real return this is always below the FIRE number.
   const coastNumber =
-    Number.isFinite(fireNumber) && yearsToRetire > 0
+    Number.isFinite(fireNumber) && yearsToRetire > 0 && r > -1
       ? fireNumber / Math.pow(1 + r, yearsToRetire)
       : fireNumber;
   const coastProgress = coastNumber > 0 ? currentInvested / coastNumber : 0;
@@ -156,7 +158,8 @@ export function projectRetirement(input: RetirementInput): RetirementResult {
   let yearsToFI: number | null = balance >= fireNumber ? 0 : null;
   let yearsToCoast: number | null = balance >= coastNumber ? 0 : null;
 
-  const horizon = Math.max(yearsToRetire, maxYears);
+  // Cap projection length (maxYears is a ceiling, not a minimum).
+  const horizon = maxYears;
   for (let y = 1; y <= horizon; y++) {
     balance = balance * (1 + r) + contributionForYear(y - 1);
     coast = coast * (1 + r);
